@@ -1,3 +1,4 @@
+require 'byebug'
 require_relative "board"
 
 # People write terrible method names in real life.
@@ -32,6 +33,7 @@ class SudokuGame
     p
   end
 
+
   def retrieve_value_from_ui
     v = nil
     until v && legal_illegibility_of_v?(v)
@@ -59,7 +61,12 @@ class SudokuGame
   end
 
   def commence_proceedings
-    process_parameters until board_process_terminates?
+    # debugger
+    # board.render
+    until board_process_terminates?
+      board.render
+      process_parameters
+    end
     puts "Congratulations, you win!"
   end
 

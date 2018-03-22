@@ -1,3 +1,4 @@
+require 'byebug'
 require_relative "tile"
 
 class Board
@@ -37,6 +38,7 @@ class Board
   end
 
   def render
+    # debugger
     puts "  #{(0..8).to_a.join(" ")}"
     grid.each_with_index do |row, i|
       puts "#{i} #{row.join(" ")}"
