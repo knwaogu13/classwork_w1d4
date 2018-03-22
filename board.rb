@@ -1,3 +1,4 @@
+require 'byebug'
 require_relative "tile"
 
 class Board
@@ -27,9 +28,12 @@ class Board
   end
 
   def []=(pos, value)
+
     x, y = pos
-    tile = grid[x][y]
-    tile.value = value
+    new_tile = Tile.new(value)
+    grid[x][y] = new_tile
+    # debugger
+    # tile.value = value
   end
 
   def columns
@@ -52,12 +56,15 @@ class Board
   end
 
   def solved?
+    # debugger
     rows.all? { |row| solved_set?(row) } &&
       columns.all? { |col| solved_set?(col) } &&
       squares.all? { |square| solved_set?(square) }
   end
 
   def solved_set?(tiles)
+    # debugger
+    # return true if tiles.empty?
     nums = tiles.map(&:value)
     nums.sort == (1..9).to_a
   end
